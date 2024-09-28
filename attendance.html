@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance and Result</title>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header h2 {
+            margin: 0;
+        }
+
+        .dashboard-header p {
+            color: #666;
+        }
+
+        .content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .circular-progress-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: transparent;
+        }
+
+        .circular-progress svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .circular-progress circle {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+            transform: translate(5px, 5px);
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .attendance-percent {
+            position: absolute;
+            top: 50px;
+            margin-left: 45px;
+        }
+
+
+        .progress-text {
+            margin-left: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: #5f72db;
+
+        }
+
+        .progress-text p {
+            margin: 5px 0;
+            color: #999;
+        }
+
+
+        .circular-progress[data-percent="83"] circle {
+            stroke-dashoffset: calc(440 - (440 * 83) / 100);
+            stroke: #5f72db;
+        }
+
+
+        .view-button {
+            background-color: white;
+            border: 1px solid #5f72db;
+            color: #5f72db;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .view-button:hover {
+            background-color: #5f72db;
+            color: white;
+        }
+
+
+        .attendance-note {
+            color: #d9534f;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+
+        .attendance-overview {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .attendance-section {
+            width: 100%;
+        }
+
+        .attendance-chart {
+            width: 100%;
+        }
+
+        /* Result Section */
+        .result-section {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .result-box {
+            background-color: #2f3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100px;
+            transition: transform 0.3s ease, opacity 1s ease;
+        }
+
+        .result-box h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .result-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+
+        .result-box.animate {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+
+        .carousel {
+            width: 98%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        .feedback-cards {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .feedback-card {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 10px;
+            background: #d0e7ff;
+            border: 1px solid #a3c1e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #ff6b6b;
+        }
+
+        h4 {
+            color: #003366;
+
+        }
+
+        p {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .carousel {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-info">
+                    <img src="avatar.svg" alt="User Avatar">
+                    <span>Yashvi Shah</span>
+                </div>
+            </header>
+
+            <div class="dashboard-header">
+                <h2>Attendance And Result </h2>
+                <p style="color: white;">Monitor student attendance and academic performance</p>
+            </div>
+            <!-- Result Section -->
+            <div class="result-section">
+                <div class="result-box animate" style="background-color:white">
+                    <h4>CPI</h4>
+                    <p>9.46</p>
+                </div>
+                <div class="result-box animate" style="background-color:white">
+                    <h4>SPI</h4>
+                    <p>9.5</p>
+                </div>
+                <div class="result-box animate" style="background-color:white">
+                    <h4>Backlog</h4>
+                    <p>0</p>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="feedback-cards" id="feedbackCardsContainer"></div>
+                    
+            </div>
+            <div class="content">
+                <div class="attendance-section">
+                    <h3>Attendance Overview</h3>
+                    <div class="attendance-overview">
+                        <div class="circular-progress-container">
+                            <div class="circular-progress" data-percent="83">
+                                <h2 class="attendance-percent">83%</h2>
+                                <svg>
+                                    <circle cx="60" cy="60" r="60"></circle>
+                                    <circle cx="60" cy="60" r="60"></circle>
+                                </svg>
+                            </div>
+                            <div class="progress-text">
+                                <p>Your Attendance</p>
+                                <p>Till Yesterday</p>
+                            </div>
+                            <button class="view-button">VIEW</button>
+                        </div>
+                    </div>
+                    <p class="attendance-note">NOTE: If attendance is less than 75%, you will not be allowed to give the
+                        exam</p>
+                    <div class="attendance-chart">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="educator_logo.jpg" alt="Educactus Logo">
+                <h1>Educactus</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="dashboard.html" >Dashboard</a></li>
+                <li><a href="attendance.html" class="active">Students</a></li>
+                <li><a href="document.html">Documents</a></li>
+                <li><a href="notification.html">Notifications</a><span class="message-count">10</span></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="myclasses.html">My Classes</a></li>
+                <li><a href="onlineclasses.css">Online Classes</a></li>
+                <li><a href="setting1.html">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <script>
+
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['FM', 'DAA', 'PA', 'CS'],
+                datasets: [{
+                    label: 'Lab',
+                    data: [81, 87, 80, 100],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+
+        const studentMarksList = [85, 86, 90];
+        let currentIndex = 0;
+        let interval;
+
+
+        const feedbackMessages = [
+            {
+                title: "Great Job!",
+                message: "Your performance is excellent! Keep up the good work!",
+            },
+            {
+                title: "Well Done!",
+                message: "You're making great progress! Stay motivated!",
+            },
+            {
+                title: "Fantastic!",
+                message: "You're doing an amazing job! Keep it up!",
+            },
+        ];
+
+
+        function createFeedbackCards() {
+            const container = document.getElementById('feedbackCardsContainer');
+            studentMarksList.forEach((marks, index) => {
+                if (marks > 80) {
+                    const card = document.createElement('div');
+                    card.className = 'feedback-card';
+                    card.innerHTML = `
+                        <button class="close-button" onclick="closeCard(this)">✖</button>
+                        <h4 style="margin: 0;">${feedbackMessages[index % feedbackMessages.length].title}</h4>
+                        <p>${feedbackMessages[index % feedbackMessages.length].message}</p>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+            startAutoSlide();
+        }
+
+
+        function closeCard(button) {
+            const card = button.parentElement;
+            card.remove();
+            const remainingCards = document.querySelectorAll('.feedback-card');
+            if (remainingCards.length > 0) {
+
+                if (currentIndex >= remainingCards.length) {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            } else {
+                currentIndex = 0;
+            }
+        }
+
+
+        function nextCard() {
+            const remainingCards = document.querySelectorAll('.feedback-card');
+            if (remainingCards.length > 0) {
+                currentIndex++;
+                if (currentIndex >= remainingCards.length) {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+        }
+
+
+        function updateCarousel() {
+            const container = document.getElementById('feedbackCardsContainer');
+            const offset = -currentIndex * 100;
+            container.style.transform = translateX(`${offset}%`);
+        }
+
+
+        function startAutoSlide() {
+            interval = setInterval(() => {
+                nextCard();
+            }, 3000);
+        }
+
+
+        window.onload = createFeedbackCards;
+    </script>
+</body>
+
+</html>

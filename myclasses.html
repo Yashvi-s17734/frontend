@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Classes</title>
+    
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="myClassesStyles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content for My Classes -->
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-info">
+                    <img src="avatar.svg" alt="User Avatar">
+                    <span>Yashvi Shah</span>
+                </div>
+            </header>
+
+            <div class="dashboard-header">
+                <h2>Overview of Your Classes' Performance</h2>
+                <p>Track and analyze your students' progress</p>
+            </div>
+
+            <div class="content">
+                <!-- Performance Chart Section for My Classes -->
+                <div class="performance">
+                    <h3>Class Performance</h3>
+                    <canvas id="myClassesChart"></canvas>  <!-- Same canvas element -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="educator_logo.jpg" alt="Educactus Logo">
+                <h1>Educactus</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="attendance.html">Students</a></li>
+                <li><a href="document.html">Documents</a></li>
+                <li><a href="notification.html">Notifications</a><span class="message-count">10</span></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="myclasses.html" class="active">My Classes</a></li>
+                <li><a href="onlineclasses.html">Online Classes</a></li>
+                <li><a href="setting1.html">Settings</a></li>
+            </ul>
+            <div class="upgrade">
+                <p></p>
+                <button>LogOut</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Add Script to Load Chart -->
+    <script src="myClassesScript.js"></script>
+</body>
+</html>

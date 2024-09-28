@@ -1,0 +1,48 @@
+
+/* Document Section */
+.document-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.document-section h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #4e54c8;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+.document-list {
+    list-style: none;
+}
+
+.document-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    border: 1px solid #eaeaea;
+    transition:  0.3s ease;
+}
+
+.document-list li:hover {
+    background-color: #e1e1fc;
+}
+
+.doc-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.document-list li span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}

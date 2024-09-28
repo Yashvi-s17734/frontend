@@ -1,0 +1,140 @@
+{
+    "schedule": [
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      },
+      {
+        "subject": "Physics - Mechanics",
+        "time": "11:00 AM - 12:30 PM",
+        "status": "Present"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "time": "09:00 AM - 10:30 AM",
+        "status": "Absent"
+      }
+    ],
+    "attendanceRecords": [
+      {
+        "subject": "Mathematics - Algebra",
+        "date": "27th Sept 2024",
+        "status": "Present"
+      },
+      {
+        "subject": "Physics - Mechanics",
+        "date": "27th Sept 2024",
+        "status": "Absent"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "date": "27th Sept 2024",
+        "status": "Present"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "date": "27th Sept 2024",
+        "status": "Present"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "date": "27th Sept 2024",
+        "status": "Present"
+      },
+      {
+        "subject": "Mathematics - Algebra",
+        "date": "27th Sept 2024",
+        "status": "Present"
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Chemistry Lab Report",
+        "dueDate": "29th Sept 2024",
+        "status": "Not Submitted"
+      },
+      {
+        "title": "Math Homework - Chapter 3",
+        "dueDate": "30th Sept 2024",
+        "status": "Submitted"
+      },
+      {
+        "title": "Chemistry Lab Report",
+        "dueDate": "29th Sept 2024",
+        "status": "Not Submitted"
+      },
+      {
+        "title": "Chemistry Lab Report",
+        "dueDate": "29th Sept 2024",
+        "status": "Not Submitted"
+      },
+      {
+        "title": "Chemistry Lab Report",
+        "dueDate": "29th Sept 2024",
+        "status": "Not Submitted"
+      },
+      {
+        "title": "Chemistry Lab Report",
+        "dueDate": "29th Sept 2024",
+        "status": "Not Submitted"
+      }
+    ],
+    "exams": [
+      {
+        "title": "Physics Mid-Term",
+        "date": "30th Sept 2024",
+        "time": "10:00 AM"
+      },
+      {
+        "title": "Chemistry Final",
+        "date": "3rd Oct 2024",
+        "time": "01:00 PM"
+      },
+      {
+        "title": "Physics Mid-Term",
+        "date": "30th Sept 2024",
+        "time": "10:00 AM"
+      },
+      {
+        "title": "Physics Mid-Term",
+        "date": "30th Sept 2024",
+        "time": "10:00 AM"
+      },
+      {
+        "title": "Physics Mid-Term",
+        "date": "30th Sept 2024",
+        "time": "10:00 AM"
+      },
+      {
+        "title": "Physics Mid-Term",
+        "date": "30th Sept 2024",
+        "time": "10:00 AM"
+      }
+    ],
+    "performance":{
+        "months":["january","feb","march","april","may","june","july","august","sept","oct","nov","dec"],
+        "marks":[17,16,100,12,85,18,80,18,80,50,30,50]
+    }
+  }
+  

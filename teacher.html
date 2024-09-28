@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="teacher.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+      
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Courses, Students, Activities">
+                </div>
+                <div class="user-info">
+                    <img src="avatar.svg" alt="User Profile">
+                    <span>Hi, Nusrat Jahan!</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h2>Today, 26th March</h2>
+                <button>New Activity</button>
+            </div>
+
+            <!-- Content Section -->
+            <div class="content">
+                <div class="performance">
+                    <h3>Performance Overview</h3>
+                    <p>Total Students: 685</p>
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+                <div class="notes-and-docs">
+                    <div class="calendar">
+                        <h3>Upcoming Events</h3>
+                        <ul>
+                            <li>Webinar - 10:00 AM</li>
+                            <li>Quiz - 12:00 PM</li>
+                            <li>Project Submission - 3:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="personal-notes">
+                        <h3>Personal Notes</h3>
+                        <textarea rows="5" placeholder="Write your notes here..."></textarea>
+                    </div>
+                    <div class="recent-documents">
+                        <h3>Recent Documents</h3>
+                        <ul>
+                            <li>Math Homework - Due: 2 days</li>
+                            <li>Science Project - Due: 5 days</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <!-- Sidebar Section -->
+          <div class="sidebar">
+            <div class="logo">
+                <img src="educator_logo.jpg" alt="EduPulse Logo">
+                <h2>Educactus</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="dashboard.html">Students</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="report.html">Reports</a></li>
+                <li><a href="message.html">Messages <span class="message-count">3</span></a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+            <div class="upgrade">
+                <button>Log out</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch data from the JSON file
+        fetch('data1.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json(); // Parse JSON data
+            })
+            .then(data => {
+                // Create the chart using fetched data
+                const ctx = document.getElementById('attendanceChart').getContext('2d');
+                const attendanceChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels, // Use labels from JSON
+                        datasets: [{
+                            label: 'Attendance',
+                            data: data.data, // Use data from JSON
+                            backgroundColor: 'rgba(88, 101, 242, 0.6)',
+                            borderColor: 'rgba(88, 101, 242, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    </script>
+    
+</body>
+</html>

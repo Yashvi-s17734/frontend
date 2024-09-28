@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <div class="main-content">
+      <div class="document-section">
+        <h2>Settings</h2>
+        <form class="settings-form" id="settingsForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="form-group">
+            <label for="notifications">Notifications</label>
+            <select id="notifications" name="notifications">
+              <option value="enabled">Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <nav class="sidebar">
+      <div class="logo">
+          <img src="educator_logo.jpg" alt="Educactus Logo">
+          <h1>Educactus</h1>
+      </div>
+      <ul class="menu">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="attendance.html">Students</a></li>
+          <li><a href="document.html">Documents</a></li>
+          <li><a href="notification.html">Notifications</a><span class="message-count">10</span></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="myclasses.html">My Classes</a></li>
+          <li><a href="attendance.html">Online Classes</a></li>
+          <li><a href="setting1.html" class="active">Settings</a></li>
+      </ul>
+      <div class="upgrade">
+          <p></p>
+          <button>LogOut</button>
+      </div>
+  </nav>
+  </div>
+
+  <script>
+
+  document.getElementById('settingsForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Fetching data from the form
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const notifications = document.getElementById('notifications').value;
+
+    // Save data to local storage
+    localStorage.setItem('username', username);
+    localStorage.setItem('email', email);
+    localStorage.setItem('notifications', notifications);
+
+    // Simulating a save operation
+    alert('Changes saved successfully!');
+
+    // Optionally, redirect to the teacher dashboard
+    window.location.href = 'teacher.html'; // Redirect to the teacher dashboard after saving
+  });
+</script>
+
+</body>
+</html>

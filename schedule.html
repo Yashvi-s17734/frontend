@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tracking Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="schedule.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                
+                <div id="dashboardCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                                <div class="card-body">
+                                    <h2 class="card-title">Class Schedule</h2>
+                                    <ul class="list-group schedule-list">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                                <div class="card-body">
+                                    <h2 class="card-title">Attendance Records</h2>
+                                    <table class="table table-striped attendance-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                                <div class="card-body">
+                                    <h2 class="card-title">Assignments</h2>
+                                    <ul class="list-group assignment-list">
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+                <nav class="sidebar">
+                    <div class="logo" style="font-size: xx-small;">
+                        <img src="educator_logo.jpg" alt="Educactus Logo">
+                        <h1 style="font-size: 30px;">Educactus</h1>
+                    </div>
+                    <ul class="menu">
+                        <li><a href="dashboard.html" >Dashboard</a></li>
+                        <li><a href="attendance.html">Students</a></li>
+                        <li><a href="document.html">Documents</a></li>
+                        <li><a href="notification.html">Notification</a><span class="message-count">49</span></li>
+                        <li><a href="schedule.html"class="active">Schedule</a></li>
+                        <li><a href="myclasses.html">My Classes</a></li>
+                        <li><a href="onlineclasses.html">Online Classes</a></li>
+                        <li><a href="setting1.html">Settings</a></li>
+                    </ul>
+                </nav>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .notification {
+            background: #d0e7ff;
+            border: 1px solid #a3c1e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-button {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: #ff6b6b;
+            float: right;
+            cursor: pointer;
+        }
+
+        .reminder {
+            font-weight: bold;
+            color: #003366;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Upcoming Notifications</h2>
+
+    <div class="notification">
+        <button class="close-button" onclick="closeNotification(this)">✖</button>
+        <p class="reminder">Reminder:</p>
+        <p>Placement Cell is coming on <strong>10th October</strong>. Prepare your resumes!</p>
+    </div>
+
+    <div class="notification">
+        <button class="close-button" onclick="closeNotification(this)">✖</button>
+        <p class="reminder">Important:</p>
+        <p>Your exam for <strong>Mathematics</strong> is due on <strong>15th October</strong>.</p>
+    </div>
+
+    <div class="notification">
+        <button class="close-button" onclick="closeNotification(this)">✖</button>
+        <p class="reminder">Notice:</p>
+        <p>Your fee payment is due by <strong>20th October</strong>. Please make the payment on time!</p>
+    </div>
+</div>
+
+<script>
+    // Function to close a notification
+    function closeNotification(button) {
+        const notification = button.parentElement;
+        notification.style.opacity = '0'; // Fade out
+        setTimeout(() => {
+            notification.remove(); // Remove element after animation
+        }, 500); // Match timeout with CSS transition duration
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educactus Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <header>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Courses, Students, Activities">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+                <div class="user-info">
+                    <img src="avatar.svg" alt="User Avatar">
+                    <span>Yashvi Shah</span>
+                </div>
+            </header>
+
+            <div class="dashboard-header">
+                <h2>Track Your Students' Progress Easier</h2>
+                <p>With Educactus "Sync 'N' Go"</p>
+                <a href="getstarted.html"><button>Get Started</button></a>
+            </div>
+
+            <div class="content">
+                <div class="performance">
+                    <h3>Student Performance</h3>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                <div class="notes-and-docs">
+                    <div class="calendar">
+                        <h4 id="date"></h4>
+                        <div id="calendar"></div>
+                    </div>
+                    <div class="personal-notes">
+                        <h4 style="margin-bottom: 10px;">Pending Works</h4>
+                        <ul class="pending-tasks">
+                            <li><span class="task-icon">&#128221;</span> Assignment-4,5 Subject: Science </li>
+                            <li><span class="task-icon">&#128221;</span> Lab Manual Subject: Science </li>
+                            <li><span class="task-icon">&#128221;</span> Assignment-2 Subject: Maths </li>
+                            <li><span class="task-icon">&#128221;</span> Lab Manual Subject: Physics </li>
+                        </ul>
+                    </div>
+                    <div class="recent-documents">
+                        <h4 style="margin-bottom: 10px;">Recently Completed Works</h4>
+                        <ul class="completed-tasks">
+                            <li><span class="check-icon">&#9989;</span> Assignment-2,3 Subject: Science </li>
+                            <li><span class="check-icon">&#9989;</span> Lab Manual Subject: Chemistry </li>
+                            <li><span class="check-icon">&#9989;</span> Assignment-1 Subject: Maths </li>
+                            <li><span class="check-icon">&#9989;</span> Tutorials Subject: Maths Tutorial </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="educator_logo.jpg" alt="Educactus Logo">
+                <h1>Educactus</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="attendance.html">Students</a></li>
+                <li><a href="document.html">Documents</a></li>
+                <li><a href="notification.html">Notifications</a><span class="message-count">10</span></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="myclasses.html">My Classes</a></li>
+                <li><a href="onlineclasses.html">Online Classes</a></li>
+                <li><a href="setting1.html">Settings</a></li>
+            </ul>
+            <div class="upgrade">
+                <button id="logoutButton">Log out</button>
+            </div>
+            </div>
+        </nav>
+    </div>
+</body>
+
+<script src="script.js"></script>
+<script>
+    document.getElementById('logoutButton').addEventListener('click', function() {
+    window.location.href = 'logout1.html'; // Redirect to logout page
+});
+</script>
+
+</html>

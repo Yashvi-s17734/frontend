@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="logout.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center text */
+}
+
+.logout-section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #305fca;
+    margin-bottom: 20px;
+}
+
+.logout-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around; /* Space between buttons */
+}
+
+.btn {
+    background-color: #305fca;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #274db2; /* Darker shade on hover */
+}
+
+.secondary {
+    background-color: #ccc; /* Light gray for the cancel button */
+}
+
+.secondary:hover {
+    background-color: #b0b0b0; /* Darker gray on hover */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logout-section">
+            <h2>Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <div class="button-group">
+                <button id="confirmLogout" class="btn">Yes, Logout</button>
+                <button id="cancelLogout" class="btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('confirmLogout').addEventListener('click', function() {
+            // Clear any stored user data (if applicable)
+            localStorage.removeItem('username'); // Adjust as necessary
+            // Redirect to login page
+            window.location.href = 'login.html'; // Adjust the URL if necessary
+        });
+
+        document.getElementById('cancelLogout').addEventListener('click', function() {
+            // Redirect to the previous page
+            window.history.back();
+            window.location.href = 'teacher.html'; // This will take the user back to the previous page
+        });
+    </script>
+</body>
+</html>

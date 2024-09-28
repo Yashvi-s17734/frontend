@@ -1,0 +1,6 @@
+{
+    "performance": {
+        "subjects": ["Math", "Science", "History", "English", "Art"],
+        "marks": [85, 90, 35, 88, 42] 
+    }
+}

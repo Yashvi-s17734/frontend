@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Class Timetable with Sidebar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      width: 100%;
+      margin-right: 270px; /* Offset for sidebar */
+    }
+
+    .document-section {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .document-section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #305fca;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Card Layout for Timetable */
+    .timetable {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .day-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      min-width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .day-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .day-card h3 {
+      font-size: 22px;
+      color: #305fca;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .subject {
+      background-color: #eef2f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .subject .time {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .subject .name {
+      font-size: 16px;
+      color: #4e54c8;
+      font-weight: 500;
+    }
+
+    .subject .teacher {
+      font-size: 14px;
+      color: #999;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1000;
+      overflow-y: auto;
+      animation: slideIn 0.5s ease forwards; /* Animation added here */
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Start fully transparent */
+      }
+      to {
+        transform: translateX(0); /* End at original position */
+        opacity: 1; /* End fully opaque */
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 22px;
+      font-weight: 600;
+      color: #305fca;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li {
+      margin: 20px 0;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #305fca;
+    }
+
+    .menu .active {
+      font-weight: bold;
+      color: #305fca;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+      }
+
+      .main-content {
+        margin-right: 0;
+        padding: 10px;
+      }
+
+      .timetable {
+        flex-direction: column;
+      }
+
+      .day-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="main-content">
+      <div class="document-section">
+        <h2>Online Class Timetable</h2>
+        <div class="timetable">
+          <!-- Monday -->
+          <div class="day-card">
+            <h3>Monday</h3>
+            <div class="subject">
+              <div class="name">Mathematics</div>
+              <div class="time">9:00 AM - 10:00 AM</div>
+              <div class="teacher">Mr. Smith</div>
+            </div>
+            <div class="subject">
+              <div class="name">English</div>
+              <div class="time">10:30 AM - 11:30 AM</div>
+              <div class="teacher">Mrs. Johnson</div>
+            </div>
+          </div>
+
+          <!-- Tuesday -->
+          <div class="day-card">
+            <h3>Tuesday</h3>
+            <div class="subject">
+              <div class="name">Science</div>
+              <div class="time">9:00 AM - 10:00 AM</div>
+              <div class="teacher">Ms. Lee</div>
+            </div>
+            <div class="subject">
+              <div class="name">History</div>
+              <div class="time">10:30 AM - 11:30 AM</div>
+              <div class="teacher">Mr. Davis</div>
+            </div>
+          </div>
+
+          <!-- Wednesday -->
+          <div class="day-card">
+            <h3>Wednesday</h3>
+            <div class="subject">
+              <div class="name">Geography</div>
+              <div class="time">9:00 AM - 10:00 AM</div>
+              <div class="teacher">Ms. Brown</div>
+            </div>
+            <div class="subject">
+              <div class="name">Physics</div>
+              <div class="time">10:30 AM - 11:30 AM</div>
+              <div class="teacher">Mr. Wilson</div>
+            </div>
+          </div>
+
+          <!-- Thursday -->
+          <div class="day-card">
+            <h3>Thursday</h3>
+            <div class="subject">
+              <div class="name">Chemistry</div>
+              <div class="time">9:00 AM - 10:00 AM</div>
+              <div class="teacher">Dr. Taylor</div>
+            </div>
+            <div class="subject">
+              <div class="name">Art</div>
+              <div class="time">10:30 AM - 11:30 AM</div>
+              <div class="teacher">Ms. White</div>
+            </div>
+          </div>
+
+          <!-- Friday -->
+          <div class="day-card">
+            <h3>Friday</h3>
+            <div class="subject">
+              <div class="name">Music</div>
+              <div class="time">9:00 AM - 10:00 AM</div>
+              <div class="teacher">Mr. Green</div>
+            </div>
+            <div class="subject">
+              <div class="name">Physical Education</div>
+              <div class="time">10:30 AM - 11:30 AM</div>
+              <div class="teacher">Coach Miller</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar">
+      <div class="logo">
+          <img src="educator_logo.jpg" alt="Educactus Logo">
+          <h1>Educactus</h1>
+      </div>
+      <ul class="menu">
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="attendance.html">Students</a></li>
+          <li><a href="document.html">Documents</a></li>
+          <li><a href="notification.html">Notifications</a><span class="message-count">10</span></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="myclasses.html">My Classes</a></li>
+          <li><a href="attendance.html" class="active">Online Classes</a></li>
+          <li><a href="setting1.html">Settings</a></li>
+      </ul>
+      <div class="upgrade">
+          <p></p>
+          <button>LogOut</button>
+      </div>
+  </nav>
+
+</body>
+</html>

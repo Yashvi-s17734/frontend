@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #5f72db, #42b883);
+    color: #fff;
+}
+
+/* Welcome Container Styling */
+.welcome-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px; /* Increased width to fit all buttons in one line */
+}
+
+.welcome-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Header Text Styling */
+.welcome-title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-subtitle {
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Role Button Styling */
+.role-selection {
+    display: flex;
+    justify-content: space-between; /* Distribute buttons evenly */
+    align-items: center;
+    gap: 20px;
+    width: 100%; /* Ensure buttons fit within the container width */
+}
+
+.role-btn {
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid white;
+    text-align: center;
+    flex: 1; /* Make all buttons have equal width */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.role-btn.student {
+    background-color: rgba(95, 114, 219, 0.8);
+}
+
+.role-btn.teacher {
+    background-color: rgba(66, 184, 131, 0.8);
+}
+
+.role-btn.parent {
+    background-color: rgba(255, 99, 99, 0.8);
+}
+
+/* Role Button Hover State */
+.role-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Role Button Active State */
+.role-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .welcome-container {
+        max-width: 600px; /* Reduce the width for smaller screens */
+    }
+
+    .role-selection {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .role-btn {
+        width: 100%; /* Ensure buttons take full width in stacked layout */
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 2.4rem;
+    }
+
+    .role-btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+}

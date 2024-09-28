@@ -1,0 +1,162 @@
+.schedule-list {
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.schedule-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+}
+
+.schedule-list li:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+.schedule-list .class-info h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.schedule-list .class-info p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+.schedule-list .badge {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.carousel-inner {
+    padding: 20px;
+}
+
+/* Attendance Table */
+.attendance-table {
+    margin-top: 15px;
+}
+
+.attendance-table th, .attendance-table td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+.attendance-table th {
+    background-color: #f8f9fa;
+}
+
+.attendance-table td {
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.attendance-table td:hover {
+    background-color: #f1f1f1;
+}
+
+.attendance-table .bg-success {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.attendance-table .bg-danger {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+/* Assignment List */
+.assignment-list {
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.assignment-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+}
+
+.assignment-list li:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+.assignment-list .assignment-info h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.assignment-list .assignment-info p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+.assignment-list .badge {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

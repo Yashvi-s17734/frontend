@@ -1,0 +1,412 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    background-color: #f0f2f5;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow towards left */
+    position: fixed;
+    top: 0;
+    right: 0; /* Fixed to the right side */
+    bottom: 0;
+    z-index: 999; /* Ensure it stays on top */
+}
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-in Animation for Sidebar */
+@keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Hover Effect for Button */
+@keyframes buttonHover {
+    0% {
+        background-color: white;
+        color: #5f72db;
+        transform: scale(1);
+    }
+    100% {
+        background-color: #5f72db;
+        color: white;
+        transform: scale(1.05);
+    }
+}
+
+/* Animation for Sidebar Items */
+@keyframes sidebarSlideIn {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Fade-in for the entire container */
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Sidebar Slide-In Animation */
+.sidebar {
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Button Hover Animation */
+.dashboard-header button {
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-header button:hover {
+    animation: buttonHover 0.3s forwards;
+}
+
+/* Animation for pending tasks on hover */
+.pending-tasks li {
+    animation: fadeIn 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.pending-tasks li:hover {
+    animation: fadeIn 0.3s ease-in-out;
+    background-color: #ff9999;
+    transform: scale(1.05);
+}
+
+/* Animation for completed tasks on hover */
+.completed-tasks li {
+    animation: fadeIn 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.completed-tasks li:hover {
+    animation: fadeIn 0.3s ease-in-out;
+    background-color: #b0ffb3;
+    transform: scale(1.05);
+}
+
+/* Animating the search bar */
+.search-bar input {
+    transition: all 0.4s ease-in-out;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #5f72db;
+    transform: scale(1.05);
+}
+
+/* Sidebar items animation */
+.menu li {
+    animation: sidebarSlideIn 0.5s ease forwards;
+    transition: background-color 0.3s ease;
+}
+
+.menu li:hover {
+    background-color: #e6e6e6;
+}
+
+
+.main-content {
+    flex: 1;
+    margin-right: 250px; /* Push content to the left when sidebar is fixed */
+    padding: 20px;
+    width: 100%;
+}
+.search-results {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+/* Style the a tags inside the search results */
+.search-results a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.search-results a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Position the search results relative to the search bar */
+.search-bar {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: static; /* Sidebar no longer fixed on smaller screens */
+        margin-bottom: 20px; /* Push content below the sidebar */
+    }
+
+    .main-content {
+        margin-right: 0; /* Remove right margin since sidebar is now on top */
+        padding: 10px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-header button {
+        margin-top: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .performance {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header {
+        text-align: center;
+    }
+
+    .dashboard-header h2 {
+        font-size: 18px;
+    }
+
+    .dashboard-header button {
+        font-size: 14px;
+    }
+
+    .user-info span {
+        display: none; /* Hide user name on very small screens */
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+}
+
+/* Sidebar Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin: 20px 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.menu .active {
+    font-weight: bold;
+}
+
+li {
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Align items vertically */
+}
+
+.message-count {
+    display: inline-block; /* Keeps the message count inline */
+    margin-left: 5px; /* Space between link and count */
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 12px;
+    vertical-align: middle; /* Aligns vertically with text */
+}
+
+
+.upgrade {
+    margin-top: 40px;
+}
+
+.upgrade p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.upgrade button {
+    padding: 10px;
+    background-color: #5f72db;
+    justify-content: center;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pending-tasks li, .completed-tasks li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Styling for pending tasks */
+.pending-tasks li {
+    background-color: #ffefef; /* Light red background */
+}
+
+.pending-tasks li:hover {
+    background-color: #ffc1c1; /* Slightly darker on hover */
+}
+
+.task-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: red; /* Red color for pending tasks */
+}
+
+/* Styling for completed tasks */
+.completed-tasks li {
+    background-color: #e7ffef; /* Light green background */
+}
+
+.completed-tasks li:hover {
+    background-color: #c2ffc9; /* Slightly darker green on hover */
+}
+
+.check-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: green; /* Green color for completed tasks */
+}
+
+/* Main Content Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dashboard-header {
+    background-color: #5f72db;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard-header button {
+    background-color: white;
+    color: #5f72db;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    margin-top: 30px;
+}
+
+.performance {
+    flex: 3;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-right: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notes-and-docs {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar,
+.personal-notes,
+.recent-documents {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
